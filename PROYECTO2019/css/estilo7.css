@@ -1,0 +1,50 @@
+*{
+	
+	margin: 0;
+	padding: 0;
+
+}
+
+div.contenedor1{
+        text-align: center;
+}
+
+ 
+
+div.centerTable table {
+
+
+       margin: 0 auto;
+       margin-top: 65px;
+       border-spacing: 0;
+}
+
+td{
+
+	padding: 5px;
+	border: rgba(100, 100, 100, .3) solid 1px;
+	text-align: center;
+
+}
+
+th{
+
+	background: #43EDB3;
+	border-bottom: 2px solid #999999;
+	border-right: rgba(100, 100, 100, .3) solid px;
+	padding: 10px;
+}
+
+#titulo{
+
+	padding: 5px;
+	border: none;
+	text-align: center;
+	background: #fff;
+
+}
+
+
+tr:hover td{
+	background-color: #EFF2F1;
+}

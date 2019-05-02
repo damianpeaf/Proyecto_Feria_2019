@@ -1,0 +1,32 @@
+*{
+
+	margin: 0;
+	padding: 0;
+	
+}
+
+table{
+
+	margin: auto;
+	margin-top: 65px;
+	border: 1px solid #919090;
+	border-spacing: 0;
+
+}
+
+td{
+
+	background: rgba(120, 220, 200, .3);
+	padding: 5px;
+	border-bottom: 3px solid #2D2C2C;
+	border-right: 1px solid black;
+
+
+}
+
+th{
+
+	background: rgba(71, 110, 215, .7);
+	border-right: 3px solid #21273D;
+
+}
