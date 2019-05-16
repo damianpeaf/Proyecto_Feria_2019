@@ -57,14 +57,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pedir peticion</title>
+
+	<link rel="stylesheet" href="css/estilo11.css">
 </head>
 <body>
 	<header>
 		
 	</header>
 	<main>
+		<?php include 'Encabezado2.php'; ?>
 		<form action="peticion.php" method="POST">
 			<table>
+				<input type="hidden" value="<?php echo $idV; ?>" name="idV">
 				<tr>
 					<td>Describe que trabajo quieres que realice <?php echo $nombre . ". "?> No olvides especificar en donde te encuentras</td>
 				</tr>
@@ -75,11 +79,16 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="submit" value="Hacer Cotizacion" name="btn1">
+						<input type="submit" value="Hacer Cotizacion" name="btn1" id="btn">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href='perfil.php?idV=<?php echo $idV; ?>' >	Volver al perfil 	</a>
 					</td>
 				</tr>
 			</table>
-			<input type="hidden" value="<?php echo $idV; ?>" name="idV">
+			
 		</form>
 	</main>
 </body>

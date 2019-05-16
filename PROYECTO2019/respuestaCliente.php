@@ -16,9 +16,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Acciones</title>
+	<link rel="stylesheet" href="css/estilo11.css">
 </head>
 <body>
 	<?php
+	include 'Encabezado2.php';
 
 		if ($estado == 1) {	?>
 

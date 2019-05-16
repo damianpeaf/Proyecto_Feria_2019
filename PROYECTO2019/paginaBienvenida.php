@@ -50,18 +50,7 @@ error_reporting(0);
 				</tr>
 			</table>
 		</form>
-		<table >
-			<thead>
-				
-			<tr>
-				<th>Profesion</th>
-				<th>Descripcion</th>
-				<th>Ubicado en</th>
-				<th>Rating</th>
-				<th># de trabajos realizados</th>
-				<th>Ver perfil</th>
-			</tr>
-			</thead>
+		<section id="resultados">
 			
 			<?php
 
@@ -116,26 +105,30 @@ error_reporting(0);
 
 
 			if ($numR > 0) {
-
+$h = 0;
 				for ($i=0; $i < $numR; $i++) { 
+					
+					$h++;
 
 					$idV = mysql_result($sql, $i, 4);
 					$idC =  mysql_result($sql, $i, 5);
 					$sql2 = mysql_query("SELECT departamento, municipio from usuariosCliente where dpi='$idC'  ", $cn);
+					$sqlauxaux = mysql_query("SELECT avatar from vend where idV = '$idV' ", $cn);
 
+					echo "<div class='resul'>";
+					echo "<a href='perfil.php?idV=$idV'><img src='files/img/". mysql_result($sqlauxaux, 0) . "' >";
+					echo " <p id='profesion'>Profesion:  " . mysql_result($sql, $i, 0). "</p></a>";
 
-
-					echo "<tr>";
-					echo "<td>". mysql_result($sql, $i, 0). "</td>";
-					echo "<td>". mysql_result($sql, $i, 1). "</td>";
-					echo "<td>". mysql_result($sql2, 0, 0). ": " .  mysql_result($sql2, 0, 1) . "</td>";
-					echo "<td>". mysql_result($sql, $i, 2). "</td>";
-					echo "<td>". mysql_result($sql, $i, 3). "</td>";
-					echo "<td><a class='cholo' href='perfil.php?idV=$idV'> ir </a> ";
-					echo "</tr>";
+					echo "<p id='lugar'>Ubicacion: ". mysql_result($sql2, 0, 0). ": " .  mysql_result($sql2, 0, 1) . "</p>";
+					echo "<p id='descripcion'>Descripcion: ". mysql_result($sql, $i, 1). "</p>";
+					echo "<p id='rating'><span>Rating: </span>". mysql_result($sql, $i, 2). "</p>";
+					echo "<p id='trabajos'>Trabajos completados: ". mysql_result($sql, $i, 3). "</p>";
+					echo "</div>";
+					
 				}
 
-				echo "<tr> <td colspan='6'>" . $numR . " registros encontrados </td></tr>";
+				echo "<div class='encontrados'><p>  ". $numR . " resultados </p></div>";
+
 
 			}else{
 
@@ -192,15 +185,17 @@ error_reporting(0);
 					$idV2 = mysql_result($sqlAux2, $k, 4);
 					$idC2 =  mysql_result($sqlAux2, $k, 5);
 					$sql9 = mysql_query("SELECT departamento, municipio from usuariosCliente where dpi='$idC2'  ", $cn);
+					$sqlauxaux2 = mysql_query("SELECT avatar from vend where idV = '$idV2' ", $cn);
 
-					echo "<tr>";
-					echo "<td>". mysql_result($sqlAux2, $k, 0). "</td>";
-					echo "<td>". mysql_result($sqlAux2, $k, 1). "</td>";
-					echo "<td>". mysql_result($sql9, 0, 0). ": " .  mysql_result($sql9, 0, 1) . "</td>";
-					echo "<td>". mysql_result($sqlAux2, $k, 2). "</td>";
-					echo "<td>". mysql_result($sqlAux2, $k, 3). "</td>";
-					echo "<td><a href='perfil.php?idV=$idV2'> ir </a> ";
-					echo "</tr>";
+					echo "<div class='resul'>";
+					echo "<a href='perfil.php?idV=$idV'><img src='files/img/". mysql_result($sqlauxaux2, 0) . "' >";
+					echo " <p id='profesion'>Profesion:  " . mysql_result($sqlAux2, $k, 0). "</p></a>";
+
+					echo "<p id='lugar'>Ubicacion: ". mysql_result($sql9, 0, 0). ": " .  mysql_result($sql9, 0, 1) . "</p>";
+					echo "<p id='descripcion'>Descripcion: ". mysql_result($sqlAux2, $k, 1). "</p>";
+					echo "<p id='rating'><span>Rating: </span>". mysql_result($sqlAux2, $k, 2). "</p>";
+					echo "<p id='trabajos'>Trabajos completados: ". mysql_result($sqlAux2, $k, 3). "</p>";
+					echo "</div>";
 					
 				}
 
@@ -211,13 +206,20 @@ error_reporting(0);
 
 		}
 
-		echo "<tr> <td colspan='6'>" . $registros . " registros encontrados </td></tr>";
 
+		if (isset($registros)) {
 
+			if ($registros== 0) {
+				echo "<div class='encontrados'><p>  ". $registros . " resultados </p></div>";	
 
-		if ($registros == 0) {
-					echo "<script> alert('no se han encontrado resultados') </script>";
-				}
+				echo "<p> No se han encontrado registros </p>";
+			}else{
+
+				echo "<div class='encontrados'><p>  ". $registros . " resultados </p></div>";	
+			}
+								
+
+								}
 
 				
 			}
@@ -227,7 +229,7 @@ error_reporting(0);
 			?>
 
 			
-		</table>
+		</section>
 
 	</main>
 

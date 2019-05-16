@@ -26,8 +26,8 @@ $sql2 = mysql_query("UPDATE consulta set respuesta = 'Cancelado por el cliente',
 
 if ($sql1) {
 		echo "<script>
-                alert('Le enviaremos una notificacion al vendedor, chequea las notificaciones para saber cuando empezara con el trabajo');
-                window.location= 'notificaciones.php'
+                alert('Puedes proceder con el pago');
+                window.location= 'pago.php'
     </script>";
  
 }else{

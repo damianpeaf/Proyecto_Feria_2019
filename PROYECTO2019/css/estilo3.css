@@ -36,9 +36,8 @@ form{
 	padding-top: 15px;
 	padding-bottom: 15px;
 	text-align: left;
-	background: #1B53A7;
-	border-bottom: 2px solid #453939;
-	color: white;
+	background: linear-gradient(-90deg, #010024, #010F4C);
+	border-bottom: 5px solid #2833C0;	color: white;
 
 
 }
@@ -81,7 +80,7 @@ form{
 
 .btnE{
 
-	background: crimson;
+	background: #3373D4;
 	color: white;
 	margin: auto;
 	padding: 10px 40px;

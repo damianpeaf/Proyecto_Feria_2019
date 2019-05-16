@@ -16,6 +16,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Acciones</title>
+	<link rel="stylesheet" href="css/estilo11.css">
 </head>
 <body>
 	<?php
@@ -29,11 +30,11 @@
 				</tr>
 				<tr>
 					<td>
-						<textarea name="respuesta"></textarea>
+						<textarea name="respuesta" class="btn"></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="precio" placeholder="precio"></td>
+					<td><input type="text" name="precio" placeholder="precio" class="btn"></td>
 				</tr>
 				<tr>
 					<td>

@@ -9,10 +9,6 @@ body{
 	font-family: Arial;
 }
 
-#main-container{
-	margin: 150px auto;
-	width: 600px;
-}
 
 .titulo{
 
@@ -47,28 +43,104 @@ table{
 
 
 
-th, td{
+table th, td{
 	padding: 7px;
 	border: 1px solid #D9D7D7;
 }
 
-thead{
-	background-color: #2792DD;
-	border-bottom: solid 5px #0F362D;
-	color: white;
-}
+
 
 tr:nth-child(even){
 	background-color: #ddd;
 }
 
-tr:hover td{
-	background-color: blue;
-	color: white;
-}
+
 
 .cholo{
 
 	text-decoration: none;
 }
 
+#resultados{
+
+	padding-top: 30px;
+	width: 90%;
+	height: auto;
+	margin: auto;
+
+}
+
+.resul {
+
+	padding: 10px;
+	background: #fff;
+	border-top: 1px solid #0C197E;
+	border-bottom:  1px solid #0C197E;
+	border-right: 1px solid #0C197E;
+	border-left: 3px solid #0C197E;
+	position: relative;
+
+}
+
+/*
+.resul p{
+
+	background: red;
+	border: 1px solid black;
+}*/
+
+#profesion{
+
+	font-size: 18px;
+	color: #1531AB;
+
+}
+
+.resul img{
+
+	float: right;
+
+	height: 100px;
+	width: 100px;
+}
+
+/*a{
+
+	text-decoration: none;
+}*/
+
+#lugar{
+
+	margin-left: 5px;
+	font-size: 16px;
+
+}
+
+#descripcion{
+
+	margin-left: 7px;
+	font-size: 14px;
+
+}
+
+
+#rating{
+
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 12;
+}
+
+#rating span{
+
+	color: #AEBA27;
+
+}
+
+
+#trabajos{
+
+	margin-left: 10px;
+	font-size: 12;
+	color: #BB3068
+}

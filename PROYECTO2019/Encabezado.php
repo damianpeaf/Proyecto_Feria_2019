@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chapuseros GT</title>
+	<title>Facilito Lo Hago GT</title>
 
 	<link rel="stylesheet" href="css/fontello.css">
 
@@ -13,7 +13,7 @@
 <body>
 	<header>
 		<div class="contenedor">
-			<h1 class="icon-lightbulb">Chapuseros</h1>
+			<h1 class="icon-lightbulb">Facilito Lo Hago</h1>
 			<input type="checkbox" id="barra-m">
 			<label class="icon-menu"for="barra-m"></label>
 			<nav class="menu">

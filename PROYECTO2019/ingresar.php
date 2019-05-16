@@ -29,12 +29,12 @@
 	<br><br><br><br><br>
 	
 	<form action="ingresar.php" method="post" class="formR">
-		<h2 class="tit">Ingreso</h2>
+		<h2 class="tit">Ingresar</h2>
 		<div class="contenedor-input">
 			<input type="text" name="usuario" placeholder="Nombre de Usuario" class="inputG" >
 			<input type="password" name="password" placeholder="contraseña"  class="inputG">
 			<input type="submit" value="INGRESAR" name="btn1" class="btnE">
-			<p class="yaTiene">¿No tienes una cuenta todavia? <a href="loginCliente.php">Ingresa aqui</a> </p>
+			<p class="yaTiene">¿No tienes una cuenta todavia? <a href="loginCliente.php">Registrate aqui</a> </p>
 		</div>
 	</form>
 	<br><br>
