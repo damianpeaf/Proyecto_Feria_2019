@@ -13,7 +13,7 @@
 <body>
 	<header>
 		<div class="contenedor">
-			<h1 class="icon-lightbulb">Facilito Lo Hago</h1>
+		<img src="logoFacilito.gif"  id="logo">
 			<input type="checkbox" id="barra-m">
 			<label class="icon-menu"for="barra-m"></label>
 			<nav class="menu">

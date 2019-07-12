@@ -17,6 +17,8 @@ $n = mysql_num_rows($sql1);
 	<header>
 		<?php include 'Encabezado2.php'; ?>
 	</header>
+	<main>
+		
 	 <form action="formVend.php" method="post" enctype="multipart/form-data">
 	 		
 	 	<h2 class="tit">Rellena los datos para poder vender Servicios</h2>
@@ -84,6 +86,7 @@ $n = mysql_num_rows($sql1);
 	 	</table>
 	 	</div>
 	 </form>
+	</main>
 </body>
 </html>
 

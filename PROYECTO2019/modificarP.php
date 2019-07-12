@@ -10,6 +10,8 @@
 	<header>
 		<?php include 'Encabezado2.php'; ?>
 	</header>
+	<main>
+		
 <form action="modificarP" method="post">	
 <table>
 	
@@ -92,5 +94,6 @@ if ($varS == null  || $varS = '') {
 	 <?php } ?>
 </table>
 </form>
+	</main>
 </body>
 </html>

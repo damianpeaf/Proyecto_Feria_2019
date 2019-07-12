@@ -11,9 +11,6 @@
 	<link rel="stylesheet" href="css/menu.css">
 </head>
 <body>
-
-	<video autoplay muted loop id="myVideo">
-  <source src="backgroundV.mp4" type="video/mp4">
 </video>
 	<header>
 		<?php

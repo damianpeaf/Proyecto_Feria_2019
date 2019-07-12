@@ -19,6 +19,8 @@ $idV = $_GET["idV"];
 	<header>
 		<?php include 'Encabezado2.php'; ?>
 	</header>
+	<main>
+		
 	 <form action="update2.php" method="post" enctype="multipart/form-data">
 	 		
 	 	<h2 class="tit">Modifica los datos</h2>
@@ -44,6 +46,7 @@ $idV = $_GET["idV"];
 	 	<input type="hidden" value="<?php echo $idV; ?>" name="idV" >
 	 	</div>
 	 </form>
+	</main>
 </body>
 </html>
 
