@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 	include 'conexion.php';
 	include 'verificacionU.php';
 
@@ -10,14 +10,17 @@
 
 	$sql0 = mysql_query("SELECT * from vend where idC ='$dpi' ", $cn);
 
+	$numeroCuentas = mysql_num_rows($sql0);
+
 	$idV = mysql_result($sql0, 0, "idV");
 
-	$sql1 = mysql_query("SELECT * from consulta where idV = '$idV' order by idConsulta desc ", $cn);
+	$sql1 = mysql_query("SELECT * from consulta where idCdelVendedor = '$dpi' order by idConsulta desc ", $cn);
+
+	//echo "<br><br><br><br><br><br><br><br><br><br>SELECT * from consulta where idCdelVendedor = '$dpi' order by idConsulta desc ";
+
+	// echo "<br><br><br><br><br><br><br><br><br>" . "SELECT * from consulta where idCdelVendedor = '$dpi' order by idConsulta desc ";
 
 	$numeroDeConsultas = mysql_num_rows($sql1);
-
-
-
 
 
 	$sql2 = mysql_query("SELECT * from consulta where idC = '$dpi' order by idConsulta desc ", $cn);
@@ -38,20 +41,24 @@
 	<header>
 		<?php include 'Encabezado2.php'; ?>
 	</header>
-	<table>
+	<main>
+	<div class="cont1">
+		
+	<table class="tbl1">
 		<tr>
-			<td colspan="5">
+			<td colspan="6">
 				<?php
-					echo "usted tiene ". $numeroDeConsultas. " consultas como vendedor ";
+					echo "usted tiene ". $numeroDeConsultas. " Cliente/s ";
 					?>
 			</td>
 		</tr>
 		<tr>
-			<th>consulta</th>
-			<th>estado</th>
-			<th>Respuesta</th>
-			<th>rating</th>
-			<th>accion</th>
+			<th>consultas</th>
+			<th>estados</th>
+			<th>Respuestas</th>
+			<th>ratings</th>
+			<th>acciones</th>
+			<th>cliente</th>
 		</tr>
 
 		<?php
@@ -70,6 +77,17 @@
 					$respuesta = mysql_result($sql1, $i, "respuesta");
 
 					$rating = mysql_result($sql1, $i, "rating");
+
+					$dpiCliente = mysql_result($sql1, $i, "idC");
+
+
+
+					$sqlAux40 = mysql_query("SELECT nombres, apellidos, telefono from usuariosCliente where dpi = '$dpiCliente' ", $cn);
+
+					
+
+
+
 
 					?>
 
@@ -119,25 +137,44 @@
 			<td>
 				<a href="respuestaVend.php?idConsulta=<?php echo $idConsulta; ?>"><?php echo $accion; ?></a>
 			</td>
+			<td>
+				<?php
+
+					$sqlAux40 = mysql_query("SELECT nombres, apellidos, telefono from usuariosCliente where dpi = '$dpiCliente' ", $cn);
+
+					//echo "SELECT nombres, apellidos, telefono from usuariosCliente where dpi = '$dpiCliente' ";
+
+					 $nombreC = mysql_result($sqlAux40, 0, 0);
+					 $apellidosC = mysql_result($sqlAux40, 0, 1);
+					 $telefonoC = mysql_result($sqlAux40, 0, 2);
+
+					echo "Pedido por ". $nombreC . " " . $apellidosC . " y su numero es ". $telefonoC;
+
+				?>
+			</td>
 		</tr>
 	<?php } }?>
 	</table>
-	<table>
+	</div>	
+	<div  class="cont1">
+		
+	<table class="tbl1">
 		<tr>
-			<td colspan="5">
+			<td colspan="6">
 				<?php
 
-				echo "usted tiene ". $numeroDeConsultasCliente. " consultas como cliente ";
+				echo "usted tiene ha hecho ". $numeroDeConsultasCliente. " pedido/s ";
 
 				?>
 			</td>
 		</tr>
 		<tr>
-			<th>consulta</th>
-			<th>estado</th>
-			<th>Respuesta</th>
+			<th>consultas</th>
+			<th>estados</th>
+			<th>Respuestas</th>
 			<th>rating</th>
-			<th>accion</th>
+			<th>acciones</th>
+			<th>Pedido a</th>
 		</tr>
 
 		<?php
@@ -206,8 +243,21 @@
 			<td>
 				<a href="respuestaCliente.php?idConsulta=<?php echo $idConsulta; ?>"><?php echo $accion; ?></a>
 			</td>
+			<td>
+				<?php
+
+					$idCdelVendedor = mysql_result($sql2, $i, "idCdelVendedor");
+
+					$consulta1 = mysql_query("SELECT nombres, apellidos from usuariosCliente where dpi = '$idCdelVendedor' ", $cn);
+
+					echo mysql_result($consulta1, 0, 0). " ". mysql_result($consulta1, 0, 1);
+
+				?>
+			</td>
 		</tr>
 	<?php }  }?>
 	</table>
+	</div>
+	</main>
 </body>
 </html>

@@ -232,6 +232,6 @@ $h = 0;
 		</section>
 
 	</main>
-
+<?php include 'pie.php'; ?>
 </body>
 </html>

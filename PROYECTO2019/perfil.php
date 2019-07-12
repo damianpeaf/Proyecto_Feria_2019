@@ -17,6 +17,11 @@
 <meta http-equiv="Content-Type" content="text/html"; charset=utf-8"/> 
 	<title>Perfil</title>
 	<link rel="stylesheet" href="css/estilo6.css">
+	<link rel="stylesheet" href="css/popup.css">
+	<<!-- meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
 </head>
 <body>
 
@@ -45,6 +50,7 @@
 				$nombreUsuario = mysql_result($sql2, 0, 2);
 				$nombre = mysql_result($sql2, 0, 0);
 				$apellido = mysql_result($sql2, 0, 1);
+				$telefono = mysql_result($sql2, 0, "telefono");
 
 			?>
 
@@ -91,7 +97,7 @@
 
 			<div id="info">
 				<h4><?php echo $nombre. " " . $apellido . ", " . $oficio; ?></h4>
-				<h5 class="center">¿quieres conocer mas sobre <?php echo " ".$nombre; ?>? puedes descargar su Curriculum <a href="descarga.php?idV=<?php echo $idV; ?>"> aqui</a></h5>
+				<h5 class="center">¿quieres conocer mas sobre <?php echo " ".$nombre; ?>? puedes descargar su Curriculum <a href="descarga.php?idV=<?php echo $idV; ?>"> aqui</a> o Puedes comunicarte al <?php echo $telefono; ?></h5>
 			</div>
 
 			<div id="comentarios">
@@ -185,12 +191,49 @@
 
 
 	<footer>
-		<div id="pie">
+	<!-- 	<div id="pie">
 			<button id="peticion">
 				<a href="peticion.php?idV=<?php echo $idV; ?>">Pedir cotizacion para trabajo</a>
 			</button>
+		</div>
+ -->
+		<button id="btn-abrir-popup" class="btn-abrir-popup">ENVIAR COTIZACION</button>
+		<div class="overlay" id="overlay">
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h3>Enviale una cotizacion a <?php echo $nombre. " " . $apellido ?> </h3>
+				<h4>Para que realize un trabajo</h4>
+				<form action="peticion.php" method="post">
+					<div class="contenedor-inputs">
+						<input type="text" placeholder="Mensaje" name="pedido">
+						<input type="hidden" value="<?php echo $idV; ?>" name="idV">
+					</div>
+					<input type="submit" class="btn-submit" value="Enviar">
+				</form>
+			</div>
 		</div>
 	</footer>
 
 </body>
 </html>
+
+<script>
+	
+
+var btnAbrirPopup = document.getElementById('btn-abrir-popup'),
+	overlay = document.getElementById('overlay'),
+	popup = document.getElementById('popup'),
+	btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+
+btnAbrirPopup.addEventListener('click', function(){
+	overlay.classList.add('active');
+	popup.classList.add('active');
+});
+
+btnCerrarPopup.addEventListener('click', function(e){
+	e.preventDefault();
+	overlay.classList.remove('active');
+	popup.classList.remove('active');
+});
+
+</script>
