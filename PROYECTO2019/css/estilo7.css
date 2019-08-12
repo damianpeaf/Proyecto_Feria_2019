@@ -23,17 +23,18 @@ div.centerTable table {
 td{
 
 	padding: 5px;
-	border: rgba(100, 100, 100, .3) solid 1px;
+	border: black solid 1px;
 	text-align: center;
 
 }
 
 th{
 
-	background: #43EDB3;
+	background: rgba(0,15,112,1) 51%;
 	border-bottom: 2px solid #999999;
 	border-right: rgba(100, 100, 100, .3) solid px;
 	padding: 10px;
+	color: white;
 }
 
 #titulo{

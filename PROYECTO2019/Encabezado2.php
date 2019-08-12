@@ -15,8 +15,8 @@
 </head>
 <body>
 	<header>
-		<div class="contenedor">
-		<img src="logoFacilito.gif"  id="logo">
+		<div class="contenedorE">
+		<a href="paginaBienvenida.php"><img src="logoFacilito.gif"  id="logo"></a>
 			<input type="checkbox" id="barra-m">
 			<a href="notificaciones.php" id="notificaciones"class="icon-bell-alt"></a>
 			<label class="icon-menu"for="barra-m"></label>

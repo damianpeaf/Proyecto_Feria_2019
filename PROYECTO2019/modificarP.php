@@ -53,11 +53,6 @@ if ($varS == null  || $varS = '') {
 		</tr>
 
 		<tr>
-			<td class="tit1">Contraseña </td>
-			<td class="text2"> <?php echo $eje[3]; ?></td>
-		</tr>
-
-		<tr>
 			<td class="tit1">Correo</td>
 			<td class="text1"> <?php echo $eje[4]; ?></td>
 		</tr>

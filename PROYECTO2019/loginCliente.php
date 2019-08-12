@@ -1,4 +1,40 @@
+<?php
 
+error_reporting(0);
+
+session_start();
+
+$nombres = "";
+$apellidos = "";
+$usuario = "";
+$contraseña ="";
+$correo ="";
+$dpi = "";
+$telefono = "";
+$fechaN = "";
+$conf = "";
+
+if (isset($_SESSION["nombres"])) {
+	
+
+$nombres = $_SESSION["nombres"];
+$apellidos = $_SESSION["apellidos"];
+$usuario = $_SESSION["usuario"];
+//$contraseña = $_SESSION["contraseña"];
+$correo =$_SESSION["correo"];
+$dpi = $_SESSION["dpi"];
+$telefono = $_SESSION["telefono"];
+$fechaN = $_SESSION["fechaN"];
+
+session_destroy();
+
+//echo "hola";
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,16 +61,17 @@
 	<form action="loginCliente.php" method="post" class="formR">
 		<h2 class="tit">Registrate como cliente</h2>
 		<div class="contenedor-input">
-			<input type="text" name="nombres" placeholder="Nombres"  class="inputP" required="">
-			<input type="text" name="apellidos" placeholder="Apellidos" class="inputP" required="">
-			<input type="text" name="usuario" placeholder="Nombre de Usuario" class="inputP" required="">
-			<input type="password" name="password" placeholder="contraseña"  class="inputP" required=""> <!-- Hacer verificacion de la seguridad de la contra -->
-			<input type="email" placeholder="Correo" name="correo"  class="inputG" required="">
-			<input type="text" placeholder="CUI" name="dpi"  class="inputP" required="">
-			<input type="text" name="telefono" placeholder="Telefono"  class="inputP" required=""> <!-- verificar numero de digitos -->
+			<input type="text" name="nombres" placeholder="Nombres"  class="inputP" required="" value="<?php echo $nombres; ?>">
+			<input type="text" name="apellidos" placeholder="Apellidos" class="inputP" required="" value="<?php echo $apellidos; ?>">
+			<input type="text" name="usuario" placeholder="Nombre de Usuario" class="inputP" required="" value="<?php echo $usuario; ?>">
+			<input type="email" placeholder="Correo" name="correo"  class="inputP" required="" value="<?php echo $correo; ?>">
+			<input type="password" name="password" placeholder="contraseña"  class="inputP" required="" value="<?php echo $contraseña; ?>">
+			<input type="password" name="conf" placeholder="confirmar contraseña"  class="inputP" required="" value="<?php echo $conf; ?>"> 
+			<input type="text" placeholder="CUI" name="dpi"  class="inputP" required="" value="<?php echo $dpi; ?>">
+			<input type="text" name="telefono" placeholder="Telefono"  class="inputP" required="" value="<?php echo $telefono ; ?>"> <!-- verificar numero de digitos -->
 			<div class="selectG" required="">
 		<label >Departamento</label>	
-			<select name="lista1" id="lista1">
+			<select name="lista1" id="lista1" >
 				<option value="1">Alta Verapaz</option>
 				<option value="2">Baja Verapaz</option>
 				<option value="3">Chimaltenango</option>
@@ -61,7 +98,7 @@
 			</div>
 			<div id="select2lista" class="selectG"></div>
 			<p>¿Cuado Naciste?</p>
-			<input type="date" name="fechaN" class="inputG" required="">
+			<input type="date" name="fechaN" class="inputG" required="" value="<?php echo $fechaN; ?>">
 			<input type="submit" value="REGISTRARSE" name="btn1" class="btnE">
 			<p class="yaTiene">¿Ya tienes una cuenta? <a href="ingresar.php">Ingresa aqui</a> </p>
 		</div>
@@ -112,29 +149,83 @@ $telefono = $_POST["telefono"];
 $IDdepartamento = $_POST["lista1"];
 $IDmunicipio = $_POST["lista2"];
 $fechaN = $_POST["fechaN"];
+$conf = $_POST["conf"];
+
+
+
+
+
+//variables de sesion 
+session_destroy();
+session_start();
+
+
+$_SESSION["nombres"] = $nombres;
+$_SESSION["apellidos"] = $apellidos;
+$_SESSION["usuario"] = $usuario;
+//$_SESSION["contraseña"] = $contraseña;
+$_SESSION["correo"] = $correo;
+$_SESSION["dpi"] = $dpi;
+$_SESSION["telefono"] = $telefono;
+$_SESSION["fechaN"] = $fechaN;
+
+
+
+//if
 
 
 	if (strlen($nombres) > 50) {
-		echo "<script> alert('El nombre debe tener como maximo 50 caracteres'); </script>";
+				echo "<script>
+                alert('El nombre debe tener como maximo 50 caracteres');
+                window.location= 'loginCliente.php'
+    </script>";
 		exit();
 	}elseif (strlen($apellidos) > 50) {
-		echo "<script> alert('El apellido debe tener como maximo 50 caracteres'); </script>";
+		echo "<script>
+                alert('El apellido debe tener como maximo 50 caracteres');
+                window.location= 'loginCliente.php'
+    </script>";
 		exit();
 	}elseif (strlen($usuario) > 10) {
-		echo "<script> alert('El nombre de usuario no puede tener mas de 10 caracteres'); </script>";
+		echo "<script>
+                alert('El nombre de usuario debe tener como maximo 10 caracteres');
+                window.location= 'loginCliente.php'
+    </script>";
 		exit();
 	}elseif (!validar_clave($contraseña, $error_encontrado)){
-      echo "<script> alert('La contraseña tiene el siguiente error: " . $error_encontrado . " '); </script>";
+      echo "<script> alert('La contraseña tiene el siguiente error: " . $error_encontrado . " '); window.location = 'loginCliente.php' </script>";
       exit();
    }elseif (strlen($correo) > 75) {
-		echo "<script> alert('El correo solo debe tener 75 caracteres'); </script>";
+		echo "<script> alert('El correo solo debe tener 75 caracteres'); window.location = 'loginCliente.php'</script>";
 		exit();
 	}elseif (!validarCUI($dpi, $error_encontrado)) {
-		 echo "<script> alert('El CUI tiene el siguiente error: " . $error_encontrado . " '); </script>";
+		 echo "<script> alert('El CUI tiene el siguiente error: " . $error_encontrado . " '); window.location = 'loginCliente.php'</script>";
 		exit();
 	}elseif (strlen($telefono) > 8) {
-		echo "<script> alert('El Telefono debe tener como maximo 8 Numeros'); </script>";
+		echo "<script> alert('El Telefono debe tener como maximo 8 Numeros'); window.location = 'loginCliente.php'</script>";
 		exit();
+	}
+
+	$aux = mysql_query("SELECT * FROM usuariosCliente where nombreUsuario = '$usuario' ", $cn);
+	$numAux = mysql_num_rows($aux);
+
+	if ($numAux>0) {
+		echo "<script> alert('El nombre de usuario ya esta en uso, por favor utiliza otro'); window.location = 'loginCliente.php'</script>";
+		exit();
+	}
+
+	$aux2 = mysql_query("SELECT * FROM usuariosCliente where dpi = '$dpi' ", $cn);
+	$numAux2 = mysql_num_rows($aux2);
+
+	if ($numAux>0) {
+		echo "<script> alert('El CUI ya esta en uso'); window.location = 'loginCliente.php'</script>";
+		exit();
+	}
+
+	if ($contraseña != $conf) {
+		echo "<script> alert('Las contraseñas no coinciden'); window.location = 'loginCliente.php'</script>";
+		exit();
+
 	}
 
 
@@ -143,18 +234,25 @@ $sql2 = mysql_query("SELECT municipio from municipio where id = '$IDmunicipio'",
 
 $departamento =  mysql_result($sql1, 0);
 $municipio = mysql_result($sql2, 0);
+
+$encrip = md5($contraseña);
+
+//echo $encrip;
  
 $sql3 = mysql_query("INSERT INTO usuariosCliente values
-					('$nombres', '$apellidos', '$usuario', '$contraseña', '$correo', '$dpi', '$telefono', '$departamento', '$municipio', '$fechaN')");
+					('$nombres', '$apellidos', '$usuario', '$encrip', '$correo', '$dpi', '$telefono', '$departamento', '$municipio', '$fechaN')");
+
+session_destroy();
 
 if (!$sql3) {
 	echo  "<br><br>Hubo un error en el registro de datos". mysql_error();
 }else{
 
-	echo "<script> alert('Te haz registrado correctamente'); </script>";
+	echo "<script> alert('Te haz registrado correctamente'); window.location = 'ingresar.php' </script>";
 }
 
 }
+
 ?>
 
 

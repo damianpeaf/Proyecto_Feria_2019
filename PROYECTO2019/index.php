@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chapuseros GT</title>
+	<title>Facilito lo hago GT</title>
 
 	<link rel="stylesheet" href="css/fontello.css">
 
@@ -23,6 +23,8 @@
 	<header>
 		<?php
 			include 'Encabezado.php';
+      session_start();
+      session_destroy();
 		?>
 	</header>
 

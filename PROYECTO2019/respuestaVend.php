@@ -21,6 +21,8 @@
 <body>
 	<?php
 
+	include 'Encabezado2.php';
+
 		if ($estado == 0) {	?>
 
 		<form action="proc1.php" method="post">
@@ -95,7 +97,7 @@
 
 		if ($estado == 5) {	
 	
-			$sqlBorrar = mysql_query("UPDATE consulta set idV = null where idConsulta = '$idConsulta' ", $cn);
+			$sqlBorrar = mysql_query("UPDATE consulta set idV = null, idCdelVendedor = null where idConsulta = '$idConsulta' ", $cn);
 
 			if ($sqlBorrar) {
 				echo "<script>

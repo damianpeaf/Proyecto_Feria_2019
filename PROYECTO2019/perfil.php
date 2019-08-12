@@ -200,7 +200,7 @@
 		<button id="btn-abrir-popup" class="btn-abrir-popup">ENVIAR COTIZACION</button>
 		<div class="overlay" id="overlay">
 			<div class="popup" id="popup">
-				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">x<i class="fas fa-times"></i></a>
 				<h3>Enviale una cotizacion a <?php echo $nombre. " " . $apellido ?> </h3>
 				<h4>Para que realize un trabajo</h4>
 				<form action="peticion.php" method="post">

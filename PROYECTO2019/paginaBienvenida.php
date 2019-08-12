@@ -16,6 +16,7 @@ error_reporting(0);
 
 	<link rel="stylesheet" href="css/estilo1.css">
 	<link rel="stylesheet" href="css/estilo5.css">
+	<link rel="icon" href="favicon.ico" type="image/ico">
 </head>
 <body>
 
@@ -63,7 +64,7 @@ error_reporting(0);
 
 			}	
 
-
+//////////////////////////////////////////////////////////// no busca nada /////////////////////////////////////////////
 
 			if ($busqueda == '') {
 				$sql = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend", $cn);
@@ -74,6 +75,9 @@ error_reporting(0);
 						// }
 
 			}else{
+
+
+				///////////////////////////////////// ALGUN FILTRO ///////////////////////////////////////////////////////////
 
 						// $sqlExtra = mysql_query("SELECT V.oficio, V.descrip, V.rating, V.trabajosRealizados, V.idV, V.idC, U.departamento, U.municipio from vend V inner join usuariosCliente U on V.idC = U.dpi ", $cn);
 
@@ -101,7 +105,15 @@ error_reporting(0);
 
 			}
 
+
+
+//////////////////////////////////////////////////////////////////////MOSTRAR//////////////////////////////////////////////////////////////////////
+
+
 			$numR = mysql_num_rows($sql);
+
+
+			
 
 
 			if ($numR > 0) {
@@ -130,29 +142,42 @@ $h = 0;
 				echo "<div class='encontrados'><p>  ". $numR . " resultados </p></div>";
 
 
+///////////////////////////////////// si no hay registros con tal oficio //////////////////////////////////////////////////////////////////////
+
 			}else{
 
-				$sqlAux = mysql_query("SELECT descrip from vend ", $cn);
+				$sqlAux = mysql_query("SELECT descrip from vend ", $cn); ///////////////////////////////////por descripcion///////////////////////////
 
 				$registros = 0;
 				$num2 = mysql_num_rows($sqlAux);
 
+
+
+
+///////////////////////////////////con cada descrip de la BD
+
 				for ($j=0; $j < $num2; $j++) { 
 
+
+///minuculas
 
 					$descripcion2 =  strtolower(mysql_result($sqlAux, $j, 0));
 
 
 					$busqueda2 = strtolower($busqueda);
 
-
+//SI ENCUENTRA
 
 					if (strpos($descripcion2, $busqueda2) !== false) {
 
 						// $o = $registros - 1;
 
 						
-						$sqlAux2 = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend where descrip='$descripcion2' order by trabajosRealizados desc limit $registros, 1", $cn);
+//IMPORTANTE //////////////////////////////////////////////////////////////////////////////////////////
+
+						// $sqlAux2 = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend where descrip='$descripcion2' order by trabajosRealizados desc limit $registros, 1", $cn);
+
+						$sqlAux2 = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend where descrip='$descripcion2' order by trabajosRealizados desc ", $cn);
 						$resultados = true;
 						$registros++;
 						
@@ -165,18 +190,22 @@ $h = 0;
 
 
 					if ($resultados) {
+
+
 						if ($sqlAux2) {
 						$num3 = mysql_num_rows($sqlAux2);
 						}else{
 							$num3 = 0;
 						}
+
+
 					}else{
 						$num3 = 0;
 					}
 					
 
 
-				
+				// SI ENUECNTRA UNO LO MUESTRA
 
 				if ($num3>0) {
 
@@ -188,7 +217,7 @@ $h = 0;
 					$sqlauxaux2 = mysql_query("SELECT avatar from vend where idV = '$idV2' ", $cn);
 
 					echo "<div class='resul'>";
-					echo "<a href='perfil.php?idV=$idV'><img src='files/img/". mysql_result($sqlauxaux2, 0) . "' >";
+					echo "<a href='perfil.php?idV=$idV2'><img src='files/img/". mysql_result($sqlauxaux2, 0) . "' >";
 					echo " <p id='profesion'>Profesion:  " . mysql_result($sqlAux2, $k, 0). "</p></a>";
 
 					echo "<p id='lugar'>Ubicacion: ". mysql_result($sql9, 0, 0). ": " .  mysql_result($sql9, 0, 1) . "</p>";
@@ -202,9 +231,13 @@ $h = 0;
 
 			}
 
+			//NO IMPORT
+
 
 
 		}
+
+
 
 
 		if (isset($registros)) {

@@ -23,6 +23,7 @@
 	<header>
 		<?php
 			include 'Encabezado.php';
+			session_destroy();
 		?>
 	</header>
 
@@ -55,7 +56,12 @@ $usuario = $_POST["usuario"];
 $contraseña = $_POST["password"];
 
 
-$sql1 = mysql_query("SELECT * from usuariosCliente where nombreUsuario = '$usuario' and contra='$contraseña' ", $cn);
+$encrip = md5($contraseña);
+
+
+$sql1 = mysql_query("SELECT * from usuariosCliente where nombreUsuario = '$usuario' and contra='$encrip' ", $cn);
+
+//echo $encrip;
 
 $n = mysql_num_rows($sql1);
 

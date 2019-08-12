@@ -81,6 +81,15 @@ footer{
 	line-height: 3;
 }
 
+footer button {
+
+	padding: 7px;
+	background: #DF2F2F;
+	border: solid black 2px;
+	color: white;
+
+}
+
 #peticion{
 
 	padding: 5px;

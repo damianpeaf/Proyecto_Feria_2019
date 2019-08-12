@@ -71,10 +71,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 	z-index: 100;
 }
 
-.contenedor{
+.contenedorE{
 
-	width: 98%;
+	width: 97%;
 	margin: auto;
+	padding: 2px;
 	/*background: red;*/
 }
 
@@ -98,8 +99,8 @@ header .contendedor{
 	text-decoration: none;
 	color: white;
 	float: right;
-	font-size:  20px;
-	margin-top: 10px;
+	font-size:  25px;
+	margin-top: 15px;
 
 }
 

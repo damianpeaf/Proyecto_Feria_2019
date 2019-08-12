@@ -13,9 +13,13 @@
 	
 </head>
 <body>
+
+	<link rel="shortcut icon" href="icono.png"/>
+
+
 	<header>
-		<div class="contenedor">
-		<img src="logoFacilito.gif"  id="logo">
+		<div class="contenedorE">
+		<a href="index.php"><img src="logoFacilito.gif"  id="logo"></a>
 			<input type="checkbox" id="barra-m">
 			<label class="icon-menu"for="barra-m"></label>
 			<nav class="menu">
