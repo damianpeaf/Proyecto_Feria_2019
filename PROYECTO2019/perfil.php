@@ -6,7 +6,33 @@
 
 	$idV = $_GET["idV"];
 
-	// echo $idV;
+
+
+$varS = $_SESSION["usuario"];
+$pedido123 = mysql_query("SELECT dpi from usuariosCliente where nombreUsuario = '$varS' ", $cn);
+echo "SELECT dpi from usuariosCliente where nombres = '$varS' ";
+$dpi123 = mysql_result($pedido123, 0,0);
+
+echo $dpi123;
+
+$pedido1234 = mysql_query("SELECT idV from vend where idC = '$dpi123' ", $cn);
+
+$numResultados = mysql_num_rows($pedido1234);
+
+
+for ($l=0; $l < $numResultados; $l++) { 
+echo "hola";
+	if (mysql_result($pedido1234, $l, 0) == $idV) {
+		echo "<script> alert('No puedes ingresar a tu mismo perfil'); window.location = 'paginaBienvenida.php'  </script>";
+		exit();
+
+		echo "hola";
+	}
+}
+
+echo mysql_error();
+
+
 
 ?>
 
@@ -201,8 +227,8 @@
 		<div class="overlay" id="overlay">
 			<div class="popup" id="popup">
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">x<i class="fas fa-times"></i></a>
-				<h3>Enviale una cotizacion a <?php echo $nombre. " " . $apellido ?> </h3>
-				<h4>Para que realize un trabajo</h4>
+				<h3>Enviale una primera cotizacion a <?php echo $nombre. " " . $apellido ?> </h3>
+				<h4>De esta manera abrirás un chat directo con el</h4>
 				<form action="peticion.php" method="post">
 					<div class="contenedor-inputs">
 						<input type="text" placeholder="Mensaje" name="pedido">

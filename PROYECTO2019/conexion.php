@@ -9,4 +9,10 @@
 
 	 mysql_query("SET NAMES 'UTF8'");
 
+
+
+	 function formatearFecha($fecha){
+	return date('g:i a', strtotime($fecha));
+}
+
  ?>

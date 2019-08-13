@@ -26,7 +26,7 @@ error_reporting(0);
 	
 	<main>
 
-		<h3 id="pregunta" class="titulo" "> Hola <?php echo " ". $_SESSION["usuario"]. " "; ?> ¿Que estas buscado hoy?</h3>
+		<h3 id="pregunta" class="titulo" "> Hola <?php echo " ". $_SESSION["usuario"]. " "; ?> ¿Qué estás buscado hoy?</h3>
 
 		<form action="paginaBienvenida.php" method="post">
 			<table id="tbl1">
@@ -67,7 +67,7 @@ error_reporting(0);
 //////////////////////////////////////////////////////////// no busca nada /////////////////////////////////////////////
 
 			if ($busqueda == '') {
-				$sql = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend", $cn);
+				$sql = mysql_query("SELECT oficio, descrip, rating, trabajosRealizados, idV, idC from vend ORDER BY rand()  ", $cn);
 
 
 						// if (!$sql) {
